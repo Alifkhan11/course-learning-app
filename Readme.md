@@ -105,3 +105,20 @@ http://localhost:5000/api/v1/teacher/create
 ```
 http://localhost:5000/api/v1/teacher/like/:id
 ```
+## Create Topic : POST
+
+```
+http://localhost:5000/api/v1/topic/create
+```
+
+
+## get all Topic : GET
+```
+http://localhost:5000/api/v1/topic/
+```
+
+
+## get Topic lesson wise : GET
+```
+http://localhost:5000/api/v1/topic/:id
+```
