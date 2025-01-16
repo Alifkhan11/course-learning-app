@@ -1,6 +1,6 @@
 import { User } from "../auth/auth.model";
 import { Courses } from "../course/course.models";
-import { Lession } from "../lestionTopic/lession.model";
+import { Lession } from "../lestion/lession.model";
 import { TEnrollCourse, TStudentProgress } from "./enroll.interface";
 import { EnrollCourse, StudentPregress } from "./enroll.model";
 

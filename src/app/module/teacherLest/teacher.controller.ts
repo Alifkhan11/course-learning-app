@@ -1,9 +1,9 @@
-import catchAsying from "../../utils/catchAsying";
+import catchAsync from "../../utils/catchAsying";
 import sendResponse from "../../utils/sendResponse";
 import { TeacherLestServices } from "./teacher.service";
 import  httpStatus  from "http-status";
 
-const createTeacherLest=catchAsying(async(req,res)=>{
+const createTeacherLest=catchAsync(async(req,res)=>{
     const resualt=await TeacherLestServices.createTeacherLestFromDB(req.body)
     sendResponse(res,{
         statusCode:httpStatus.OK,
@@ -13,7 +13,7 @@ const createTeacherLest=catchAsying(async(req,res)=>{
     })
 })
 
-const studentLikeTeacher=catchAsying(async(req,res)=>{
+const studentLikeTeacher=catchAsync(async(req,res)=>{
     const id=req.params.id
     const data=req.body
     const resualt=await TeacherLestServices.studentLikeTeacherToDB(id,data)

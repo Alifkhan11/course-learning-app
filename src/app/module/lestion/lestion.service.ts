@@ -1,10 +1,9 @@
-import { set } from "mongoose";
 import { User } from "../auth/auth.model";
 import { Courses } from "../course/course.models";
 import { Lession, StudentEngagement, StudentFollowCourse } from "./lession.model";
 import { TLesson, TStudentEngagement, TStudentFollowCourse } from "./lesson.intercace";
 
-const createLessitionTopicFromDB=async (data: TLesson) => {
+const createLessitionFromDB=async (data: TLesson) => {
     const exisitLesson=await Lession.findOne({title:data.title})
     if(exisitLesson){
         throw new Error('Lesson already exists')
@@ -17,7 +16,7 @@ const createLessitionTopicFromDB=async (data: TLesson) => {
     return result
 }
 
-const updathLessionTopicFromDB=async (data: TLesson,id:string) => {
+const updathLessionFromDB=async (data: TLesson,id:string) => {
     console.log(id);
     
  const exisitLesson=await Lession.findById(id)
@@ -33,7 +32,7 @@ const updathLessionTopicFromDB=async (data: TLesson,id:string) => {
     return resualt
 }
 
-const deletedLessionTopicFromDB=async (id:string) => {
+const deletedLessionFromDB=async (id:string) => {
     const exisitLesson=await Lession.findById(id)
     if(!exisitLesson){
         throw new Error('Lesson not found')
@@ -126,12 +125,18 @@ const getLessonToDB=async()=>{
     const resualt=await Lession.find()
     return resualt
 }
+//only course usder the lesson
+const getLessonByCoursesToDB=async(courseID:string)=>{
+    const resualt=await Lession.find({courseID})
+    return resualt
+}
 
 export const lessionServices={
-    createLessitionTopicFromDB,
-    updathLessionTopicFromDB,
-    deletedLessionTopicFromDB,
+    createLessitionFromDB,
+    updathLessionFromDB,
+    deletedLessionFromDB,
     studentEngagement,
     studentFollowCourse,
-    getLessonToDB
+    getLessonToDB,
+    getLessonByCoursesToDB
 }

@@ -1,11 +1,11 @@
 import { NextFunction, Request, Response } from "express";
-import catchAsying from "../utils/catchAsying";
+import catchAsync from "../utils/catchAsying";
 import { User } from "../module/auth/auth.model";
 import { TUserRole } from "../constains";
 import Jwt, { JwtPayload } from 'jsonwebtoken'
 
 const auth=(...requiredRoles:TUserRole[])=>{
-    return catchAsying(async(req:Request,res:Response,next:NextFunction)=>{
+    return catchAsync(async(req:Request,res:Response,next:NextFunction)=>{
         const token=req.headers.authorization
         if(!token){
             throw new Error('You have not authrize')

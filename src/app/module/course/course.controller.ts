@@ -1,9 +1,9 @@
-import catchAsying from "../../utils/catchAsying";
+import catchAsync from "../../utils/catchAsying";
 import sendResponse from "../../utils/sendResponse";
 import { courseServices } from "./course.service";
 import httpStatus from "http-status";
 
-const createCourse = catchAsying(async (req, res) => {
+const createCourse = catchAsync(async (req, res) => {
     const resualt = await courseServices.createCourseFromDB(req.body)
     sendResponse(res, {
         statusCode: httpStatus.OK,
@@ -13,7 +13,7 @@ const createCourse = catchAsying(async (req, res) => {
     })
 })
 
-const updateCourse = catchAsying(async (req, res) => {
+const updateCourse = catchAsync(async (req, res) => {
     const id = req.params.id
     const data = req.body
     const resualt = await courseServices.updathCourseFromDB(id, data)
@@ -25,7 +25,7 @@ const updateCourse = catchAsying(async (req, res) => {
     })
 })
 
-const deleteCourse = catchAsying(async (req, res) => {
+const deleteCourse = catchAsync(async (req, res) => {
     const id = req.params.id
     const resualt = await courseServices.deleteCourseFromDB(id)
     sendResponse(res, {
@@ -38,7 +38,7 @@ const deleteCourse = catchAsying(async (req, res) => {
 )
 
 
-const incrementViews = catchAsying(async (req, res) => {
+const incrementViews = catchAsync(async (req, res) => {
     const id = req.params.id
     const resualt =await courseServices.incrementViews(id)
     sendResponse(res, {
@@ -49,7 +49,7 @@ const incrementViews = catchAsying(async (req, res) => {
     })
 })
 
-const incrementLikes = catchAsying(async (req, res) => {
+const incrementLikes = catchAsync(async (req, res) => {
     const id = req.params.id
     const resualt =await courseServices.incrementLikes(id)
     sendResponse(res, {
@@ -60,7 +60,7 @@ const incrementLikes = catchAsying(async (req, res) => {
     })
 })
 
-const createFeedback = catchAsying(async (req, res) => {
+const createFeedback = catchAsync(async (req, res) => {
      const resualt= await courseServices.createFeedbackFromDB(req.body)
     sendResponse(res, {
         statusCode: httpStatus.OK,
@@ -70,7 +70,7 @@ const createFeedback = catchAsying(async (req, res) => {
     })
 })
 
-const getAllCourses=catchAsying(async(req,res)=>{
+const getAllCourses=catchAsync(async(req,res)=>{
     const query=req.query
     const resualt=await courseServices.getAllCoursesToDB(query)
     sendResponse(res,{
@@ -81,7 +81,7 @@ const getAllCourses=catchAsying(async(req,res)=>{
     })
 })
 
-const getSingleCourses=catchAsying(async(req,res)=>{
+const getSingleCourses=catchAsync(async(req,res)=>{
     const id=req.params.id
     const resualt=await courseServices.getSingleCourseToDB(id)
     sendResponse(res,{
@@ -92,7 +92,7 @@ const getSingleCourses=catchAsying(async(req,res)=>{
     })
 })
 
-const createFeedbackReplay=catchAsying(async(req,res)=>{
+const createFeedbackReplay=catchAsync(async(req,res)=>{
     const id=req.params.id as string
     const replay=req.body
     const resualt=await courseServices.createFeedbackReplayFromDB(replay,id)

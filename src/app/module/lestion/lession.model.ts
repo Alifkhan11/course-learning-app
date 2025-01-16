@@ -1,37 +1,9 @@
 import { model, Schema } from "mongoose";
+import { TLesson } from "./lesson.intercace";
 
 
 
-const QuestionSchema = new Schema({
-    question: { 
-        type: String, 
-        required: true
-     },
-    answer: {
-        type: String,
-        required: true
-     },
-});
-
-const TopicSchema = new Schema({
-    title: { 
-        type: String, 
-        required: true
-     },
-    description: { 
-        type: String, 
-        required: true
-     },
-    isDeleted: { 
-        type: Boolean, 
-        default: false
-     },
-    questions: [QuestionSchema]
-});
-
-
-
-const lessionTopicSchema=new Schema({
+const lessionSchema=new Schema<TLesson>({
     title:{
         type:String,
         required:true
@@ -53,11 +25,10 @@ const lessionTopicSchema=new Schema({
         enum:['active','block'],
         default:'active'
     },
-    topics:[TopicSchema]
 })
 
 
-export const Lession=model('Lession',lessionTopicSchema)
+export const Lession=model('Lession',lessionSchema)
 
 
 const TStudentEngagementSchema = new Schema({

@@ -1,44 +1,44 @@
-import catchAsying from "../../utils/catchAsying";
+import catchAsync from "../../utils/catchAsying";
 import { Request, Response } from 'express';
 import { lessionServices } from "./lestion.service";
 import sendResponse from "../../utils/sendResponse";
 import httpStatus from "http-status";
 
-const createLessitionTopic=catchAsying(async(req:Request,res:Response)=>{
+const createLessition=catchAsync(async(req:Request,res:Response)=>{
     const data=req.body
-    const result=await lessionServices.createLessitionTopicFromDB(data)
+    const result=await lessionServices.createLessitionFromDB(data)
     sendResponse(res,{
         statusCode:200,
         success:true,
-        message:'Lession and topic created successfully',
+        message:'Lession and  created successfully',
         data:result
     })
 })
 
-const updathLessionTopic=catchAsying(async(req:Request,res:Response)=>{
+const updathLession=catchAsync(async(req:Request,res:Response)=>{
     const id=req.params.id
     const data=req.body
-    const result=await lessionServices.updathLessionTopicFromDB(data,id)
+    const result=await lessionServices.updathLessionFromDB(data,id)
     sendResponse(res,{
         statusCode:200,
         success:true,
-        message:'Lession and topic updated successfully',
+        message:'Lession and  updated successfully',
         data:result
     })
 })
 
-const deletedLessionTopic=catchAsying(async(req:Request,res:Response)=>{
+const deletedLession=catchAsync(async(req:Request,res:Response)=>{
     const id=req.params.id
-    const result=await lessionServices.deletedLessionTopicFromDB(id)
+    const result=await lessionServices.deletedLessionFromDB(id)
     sendResponse(res,{
         statusCode:200,
         success:true,
-        message:'Lession and topic deleted successfully',
+        message:'Lession and  deleted successfully',
         data:result
     })
 })
 
-const studentEngagement=catchAsying(async(req:Request,res:Response)=>{
+const studentEngagement=catchAsync(async(req:Request,res:Response)=>{
     const data=req.body
     const result=await lessionServices.studentEngagement(data)
     sendResponse(res,{
@@ -49,7 +49,7 @@ const studentEngagement=catchAsying(async(req:Request,res:Response)=>{
     })
 })
 
-const studentFollowCourse=catchAsying(async(req:Request,res:Response)=>{
+const studentFollowCourse=catchAsync(async(req:Request,res:Response)=>{
     const data=req.body
     const result=await lessionServices.studentFollowCourse(data)
     sendResponse(res,{
@@ -60,7 +60,7 @@ const studentFollowCourse=catchAsying(async(req:Request,res:Response)=>{
     })
 })
 
-const getLesson=catchAsying(async(req,res)=>{
+const getLesson=catchAsync(async(req,res)=>{
     const resualt=await lessionServices.getLessonToDB()
     sendResponse(res,{
         statusCode:httpStatus.OK,
@@ -71,11 +71,26 @@ const getLesson=catchAsying(async(req,res)=>{
 })
 
 
+const getLessonByCourses=catchAsync(async(req,res)=>{
+    const id=req.params.id
+    console.log(id);
+    
+    const resualt=await lessionServices.getLessonByCoursesToDB(id)
+    sendResponse(res,{
+        statusCode:httpStatus.OK,
+        success:true,
+        message:'Only Course under the lession',
+        data:resualt
+    })
+})
+
+
 export const lessionController={
-    createLessitionTopic ,
-    updathLessionTopic ,
-    deletedLessionTopic,
+    createLessition ,
+    updathLession ,
+    deletedLession,
     studentEngagement,
     studentFollowCourse,
-    getLesson
+    getLesson,
+    getLessonByCourses
 }

@@ -1,9 +1,10 @@
 import { Router } from "express";
 import { authRouter } from "../module/auth/auth.router";
 import { courseRouter } from "../module/course/course.router";
-import { lessionRouter } from "../module/lestionTopic/lession.router";
+import { lessionRouter } from "../module/lestion/lession.router";
 import { enrollCourseRouter } from "../module/enrollCourses/enroll.router";
 import { TeacherRouter } from "../module/teacherLest/teacher.router";
+import { TopicRouter } from "../module/topic/topic.router";
 
 const router = Router()
 
@@ -27,6 +28,10 @@ const moduleRouter=[
     {
         path:'/teacher',
         router:TeacherRouter
+    },
+    {
+        path:'/topic',
+        router:TopicRouter
     },
 ]
 

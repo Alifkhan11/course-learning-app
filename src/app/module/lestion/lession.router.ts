@@ -9,20 +9,20 @@ const router = e.Router();
 router.post(
     "/create", 
     auth('teacher'),
-    validateRequest(lessionvalivation.lessionTopicValidationSchema),
-    lessionController.createLessitionTopic
+    validateRequest(lessionvalivation.lessionValidationSchema),
+    lessionController.createLessition
 
 );
 router.patch(
     "/updath/:id", 
     auth('teacher'),
-    lessionController.updathLessionTopic
+    lessionController.updathLession
 
 );
 router.delete(
     "/delete/:id", 
     auth('teacher'),
-    lessionController.deletedLessionTopic
+    lessionController.deletedLession
 
 );
 
@@ -45,10 +45,17 @@ router.post(
 
 
 router.get(
+    '/:id',
+    auth('student','teacher'),
+    lessionController.getLessonByCourses
+)
+router.get(
     '/',
     auth('student','teacher'),
     lessionController.getLesson
 )
+
+
 
 
 

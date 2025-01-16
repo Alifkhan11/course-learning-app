@@ -3,9 +3,9 @@ import httpStatus from 'http-status';
 import { TRegister } from "./auth.interfatch"
 import { authServices } from "./auth.service"
 import { Request, Response } from "express"
-import catchAsying from "../../utils/catchAsying";
+import catchAsync from "../../utils/catchAsying";
 
-const registrationUser =catchAsying( async (req: Request, res: Response) => {
+const registrationUser =catchAsync( async (req: Request, res: Response) => {
     const user = req.body as TRegister;
     const result = await authServices.registrationUserFromDB(user);
     sendResponse(res, {
@@ -17,7 +17,7 @@ const registrationUser =catchAsying( async (req: Request, res: Response) => {
 });
 
 
-const loginUser=catchAsying(async(req:Request,res:Response)=>{  
+const loginUser=catchAsync(async(req:Request,res:Response)=>{  
 const user=req.body
 const resualt=await authServices.loginUserFromDB(user)
 sendResponse(res,{

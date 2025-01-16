@@ -6,21 +6,6 @@ export type TLesson={
     discription:string,
     isDeleted:boolean
     status:'active'|'block'
-    topics?:TTopics[]
-}
-
-export type TQuestions = {
-    question: string,
-    answer: string,
-    isCorrect: boolean
-}
-
-export type TTopics={
-    title:string,
-    lessonID:ObjectId,
-    discription:string,
-    isDeleted:boolean
-    questions?:TQuestions[]
 }
 
 

@@ -1,9 +1,9 @@
-import catchAsying from "../../utils/catchAsying";
+import catchAsync from "../../utils/catchAsying";
 import sendResponse from "../../utils/sendResponse";
 import { enrollServices } from "./enroll.service";
 import  httpStatus  from "http-status";
 
-const createEnrollCourses=catchAsying(async(req,res)=>{
+const createEnrollCourses=catchAsync(async(req,res)=>{
     const resualt=await enrollServices.createEnrollCouresFromDB(req.body)
     sendResponse(res,{
         statusCode:httpStatus.OK,
@@ -13,7 +13,7 @@ const createEnrollCourses=catchAsying(async(req,res)=>{
     })
 })
 
-const createStudentProgres=catchAsying(async(req,res)=>{
+const createStudentProgres=catchAsync(async(req,res)=>{
     const resualt=await enrollServices.createStudentProgresFromDB(req.body)
     sendResponse(res,{
         statusCode:httpStatus.OK,
